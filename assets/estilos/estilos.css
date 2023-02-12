@@ -41,6 +41,7 @@ li a{
 section{
     background-color: rgb(243, 105, 147);
     color: white;
+    align-items: center;
 }
 section a{
     text-align: center;

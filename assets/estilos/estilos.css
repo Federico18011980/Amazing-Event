@@ -152,4 +152,10 @@ h6{
 .redes img{
     width: 50px;
 }
+.cohort{
+    color: white;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-shadow: 2px 2px 2px rgba(0,0,0,0.5);
+}
    

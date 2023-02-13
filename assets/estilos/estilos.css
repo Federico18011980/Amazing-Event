@@ -98,6 +98,12 @@ section a{
     border:none;
     color: white;
     width: 30px;
+    box-shadow: 5px 5px 5px rgba(0,0,0,0.5);
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
 }
 #buscar{
     border: 1px solid white;
@@ -106,9 +112,13 @@ section a{
     -moz-border-radius: 5px;
     -ms-border-radius: 5px;
     -o-border-radius: 5px;
+    box-shadow: 5px 5px 5px rgba(0,0,0,0.5);
 }
 .card{
     overflow: hidden;
+    margin-top: 10px;
+    margin-bottom: 5px;
+    box-shadow: 5px 5px 10px rgba(0,0,0,0.5);
 }
 .card-img-top{
     width:100%;
@@ -143,6 +153,21 @@ h6{
     
     line-height: 100%;
 }
+.btn{
+    box-shadow: 5px 5px 5px rgba(0,0,0,0.5);
+    transition: all 0.5s;
+    -webkit-transition: all 0.5s;
+    -moz-transition: all 0.5s;
+    -ms-transition: all 0.5s;
+    -o-transition: all 0.5s;
+}
+.btn:hover{
+    transform: scale(1.05);
+    -webkit-transform: scale(1.05);
+    -moz-transform: scale(1.05);
+    -ms-transform: scale(1.05);
+    -o-transform: scale(1.05);
+}
 .footer-general{
     background-color: lightpink;
     border-top: 3px solid rgb(251, 123, 123);
@@ -158,4 +183,71 @@ h6{
     letter-spacing: 1px;
     text-shadow: 2px 2px 2px rgba(0,0,0,0.5);
 }
+   @media screen and (max-width:485px){
+    nav{
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: center !important;
+        align-items: center !important;
+    }
+    
+    .navbar-1{
+            display: flex;
+            justify-content: center;
+    }
+
+  .navbar-2{
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 5px;
+        justify-content: center !important;
+    }
+  
+    .formulario{
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        justify-content: center !important;
+
+    }
+    .field-check{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
    
+   }
+/**************************************************************/
+   @media screen and (max-width:1023px){
+   
+    .field-buscar{
+        display: flex !important;
+        flex-direction: row !important;
+        justify-content: center !important;
+        align-items: center !important;
+    }
+   }
+   /***********************************************************/
+   @media screen and (max-width:768){
+    nav{
+        display: flex !important;
+        flex-direction: row !important;
+        align-items: center !important;
+        justify-content: center !important;
+    }
+    .navbar-1{
+        display: flex !important;
+        justify-content: center !important;
+    }
+    .navbar-2{
+        display: flex !important;
+        flex-direction: row !important;
+        justify-content: space-between !important;
+    }
+   }
+ 
+    
+    
+
+
+ 

@@ -5,33 +5,75 @@
 }
 body{
     margin: 0 auto;
+    background-color: rgb(247, 206, 212);
 }
+
 header{
     padding-left: 0 !important;
     padding-right: 0 !important;
-}
-.navbar-brand{
-    display: inline-block;
+    background-color: rgb(247, 206, 212);
 }
 
-li{
-    list-style: none;
+.navbar-brand {
+    display: inline-block;
     
-}  
-  
-li a{
+}
+.navbar-1 a{
+    background: transparent;
+}
+
+.navbar-2 a{
     color: white;
     font-weight: 600;
     text-decoration: none;
     margin-left: 10px ;
     padding: 5px;
-    border:none;
-    background-color: rgb(156, 225, 225);
+    border: 1px solid white;
+    background-color: rgb(243, 105, 147);
     border-radius: 10px;
     -webkit-border-radius: 10px;
     -moz-border-radius: 10px;
     -ms-border-radius: 10px;
     -o-border-radius: 10px;
+    box-shadow: 2px 2px 2px rgba(0,0,0,0.5);
+    transition: all 0.5s ease ;
+    -webkit-transition: all 0.3s ease ;
+    -moz-transition: all 0.5s ease ;
+    -ms-transition: all 0.5s ease ;
+    -o-transition: all 0.5s ease ;
+}
+.navbar-2 a:hover {
+   transform: scale(1.075);
+   background-color: white;
+   color:rgb(243, 105, 147);
+   -webkit-transform: scale(1.075);
+   -moz-transform: scale(1.075);
+   -ms-transform: scale(1.075);
+   -o-transform: scale(1.075);
+}
+.link-titulo{
+    color: white;
+    font-weight: 600;
+    width: 30px;
+    border: 1px solid white;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+    box-shadow: 2px 2px 2px rgba(0,0,0,0.5);
+    transition: all 0.5s ease;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -ms-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+}
+.link-titulo:hover{
+    transform: scale(1.1);
+    -webkit-transform: scale(1.1);
+    -moz-transform: scale(1.1);
+    -ms-transform: scale(1.1);
+    -o-transform: scale(1.1);
 }
 .titulo{
     display: inline-block;
@@ -46,5 +88,68 @@ section{
 section a{
     text-align: center;
    
+}
+
+.formulario{
+   padding: 5px 0px;
+}
+.boton-buscar{
+    background: transparent;
+    border:none;
+    color: white;
+    width: 30px;
+}
+#buscar{
+    border: 1px solid white;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+}
+.card{
+    overflow: hidden;
+}
+.card-img-top{
+    width:100%;
+    height: 150px;
+}
+.card img{
+    transition: all 1.55s ease;
+    -webkit-transition: all 1.55s ease;
+    -moz-transition: all 1.55s ease;
+    -ms-transition: all 1.55s ease;
+    -o-transition: all 1.55s ease;
+}
+.card:hover img{
+    transform: scale(1.15);
+    -webkit-transform: scale(1.15);
+    -moz-transform: scale(1.15);
+    -ms-transform: scale(1.15);
+    -o-transform: scale(1.15);
+}
+.img-top-card {
+    width: 100%;
+
+}
+.card-titulo{
+    text-align: center;
+}
+.texto{
+    text-align: center;
+}
+h6{
+    display: inline-block;
+    
+    line-height: 100%;
+}
+.footer-general{
+    background-color: lightpink;
+    border-top: 3px solid rgb(251, 123, 123);
+    margin-top: 20px;
+    padding: 10px 5px;
+}
+.redes img{
+    width: 50px;
 }
    

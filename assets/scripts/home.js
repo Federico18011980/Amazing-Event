@@ -1,4 +1,4 @@
-let card = document.getElementsByClassName("card"); 
+
 let principal=document.getElementById('principal');
 let fragment = document.createDocumentFragment();
 
@@ -40,18 +40,3 @@ for (let i = 0; i < data.events.length; i++) {
 principal.appendChild(fragment);
 
 
-
-/*
-
-
-
-for (const evento of past) {
-  for (const key in evento) {
-    console.log(key + " -> " + evento[key]);
-  }
-  //console.log("Eventos pasados "+ Object.entries(evento));  
-}
-
-
-
-*/

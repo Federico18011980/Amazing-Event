@@ -1,9 +1,17 @@
-let card = document.getElementsByClassName("card"); 
+
 let principal=document.getElementById('principal');
 let fragment = document.createDocumentFragment();
-
+let upcoming=[];
 
 for (let i = 0; i < data.events.length; i++) {
+
+    if (data.events[i].date > data.currentDate) {
+      upcoming.push(data.events[i]);    
+    }
+    
+}
+for (let i = 0; i < upcoming.length; i++) {
+
     let creaDiv = document.createElement('div');  
     let creaImg = document.createElement('img');
     let cardTexto = document.createElement('p');
@@ -13,7 +21,7 @@ for (let i = 0; i < data.events.length; i++) {
     let btn = document.createElement('a');
 
     creaDiv.setAttribute('class','card');
-    creaImg.setAttribute('src',data.events[i].image);
+    creaImg.setAttribute('src',upcoming[i].image);
     creaImg.setAttribute('class','imagen');
     cardTexto.setAttribute('class','texto');
     cardtitulo.setAttribute('class','card-titulo')
@@ -22,9 +30,9 @@ for (let i = 0; i < data.events.length; i++) {
     btn.classList.add('btn', 'btn-danger');
     btn.setAttribute('href', './details.html');
     
-    cardtitulo.textContent=data.events[i].name;
-    cardTexto.innerHTML=data.events[i].description;
-    pieTexto.textContent='Price $'+data.events[i].price;
+    cardtitulo.textContent=upcoming[i].name;
+    cardTexto.innerHTML=upcoming[i].description;
+    pieTexto.textContent='Price $'+upcoming[i].price;
     btn.textContent ='Ver Mas';
     
     pieDeCard.appendChild(pieTexto);
@@ -34,24 +42,7 @@ for (let i = 0; i < data.events.length; i++) {
     creaDiv.appendChild(pieDeCard)
     creaDiv.appendChild(btn);
     fragment.appendChild(creaDiv);
-
+    
 }
-
 principal.appendChild(fragment);
 
-
-
-/*
-
-
-
-for (const evento of past) {
-  for (const key in evento) {
-    console.log(key + " -> " + evento[key]);
-  }
-  //console.log("Eventos pasados "+ Object.entries(evento));  
-}
-
-
-
-*/

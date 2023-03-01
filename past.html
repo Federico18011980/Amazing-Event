@@ -58,6 +58,44 @@
             d="M7.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L13.293 8 7.646 2.354a.5.5 0 0 1 0-.708z" />
         </svg></a>
     </section>
+    <div class="container cont-form  mt-2 bg-danger bg-opacity-10">
+      <div class="row">
+        <form class="row formulario d-flex flex-row justify-content-between">
+          <fieldset class="field-check col-12 col-sm-12 col-md-8 col-lg-8">
+            <input type="checkbox" name="food" id="food">
+            <label for="food">Food Fair </label>
+            
+            <input type="checkbox" name="museum" id="museum" class="categoria">
+            <label for="museum">Museum</label>
+            
+            <input type="checkbox" name="costume" id="costume" class="categoria">
+            <label for="costume">Costume Party</label>
+            
+            <input type="checkbox" name="music" id="music" class="categoria">
+            <label for="music">Music concert</label>
+            
+            <input type="checkbox" name="race" id="race" class="categoria">
+            <label for="race">Race</label>
+            
+            <input type="checkbox" name="book" id="book" class="categoria">
+            <label for="book">Book Exchange</label>
+            
+            <input type="checkbox" name="cinema" id="cinema" class="categoria">
+            <label for="cinema">Cinema</label>
+          </fieldset>
+
+          <fieldset class="field-buscar d-flex justify-content-end col-12 col-sm-12 col-md-4 col-lg-4">
+            <input type="text" name="buscar" id="buscar" placeholder="Buscar...">
+            <button type="button" onclick="valorBuscador()" class="boton-buscar" id="btn-buscador"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                <path
+                  d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
+              </svg></button>
+          </fieldset>
+
+        </form>
+      </div>
+    </div>
 
     <div class="container">
       <div class="col d-flex principal" id="principal">

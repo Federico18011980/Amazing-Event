@@ -16,6 +16,9 @@ body{
     background-color:var(--color-claro);
     font-family: 'Roboto Slab', serif;
 }
+.ocultar{
+    display: none;
+}
 
 header{
     padding-left: 0 !important;
@@ -98,6 +101,9 @@ section a{
     text-align: center;
    
 }
+label{
+    margin-right: 3px;
+}
 
 .formulario{
    padding: 5px 0px;
@@ -140,7 +146,7 @@ section a{
 }
 
 
-.card{
+.card, .card1 {
     width: 250px;
     height: 400px;
     overflow: hidden;
@@ -158,7 +164,7 @@ section a{
 .imagen{
     height: 150px;
 }
-.card img{
+.card img, .card1 img{
     transition: all 1.55s ease;
     -webkit-transition: all 1.55s ease;
     -moz-transition: all 1.55s ease;

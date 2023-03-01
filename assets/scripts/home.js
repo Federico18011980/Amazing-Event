@@ -1,7 +1,7 @@
 
 let principal=document.getElementById('principal');
 let fragment = document.createDocumentFragment();
-
+let buscador = document.getElementById('buscar');
 
 for (let i = 0; i < data.events.length; i++) {
     let creaDiv = document.createElement('div');  
@@ -36,7 +36,38 @@ for (let i = 0; i < data.events.length; i++) {
     fragment.appendChild(creaDiv);
 
 }
+// Obtener el elemento de entrada
 
 principal.appendChild(fragment);
 
+//el siguiente código filtra en el input buscar y borra 
+//las cards que no coinciden con el texto 
+
+document.addEventListener('keyup', e=>{
+    if (e.target.matches("#buscar")) {
+        document.querySelectorAll(".card").forEach(tarjeta =>{
+            tarjeta.textContent.toLocaleLowerCase().includes(e.target.value.toLocaleLowerCase())
+            ?tarjeta.classList.remove("ocultar")
+            :tarjeta.classList.add("ocultar");
+        })
+    } ;
+    
+})
+
+// aplicando filtros por checkbox
+
+let chek = [];
+let listachek = " ";
+
+// aquí obtenemos las categorias de evemtos
+// y las guardamos en el array check[] 
+// sin repetirlas
+
+data.events.forEach(evento => {
+
+    if(!chek.includes(evento.category)){
+        chek.push(evento.category)
+    }
+    
+});
 

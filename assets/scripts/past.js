@@ -45,3 +45,16 @@ for (let i = 0; i < past.length; i++) {
     
 }
 principal.appendChild(fragment);
+
+//agregando filtro de texto en el input buscador
+
+document.addEventListener('keyup', e=>{
+  if (e.target.matches("#buscar")) {
+      document.querySelectorAll(".card").forEach(tarjeta =>{
+          tarjeta.textContent.toLocaleLowerCase().includes(e.target.value.toLocaleLowerCase())
+          ?tarjeta.classList.remove("ocultar")
+          :tarjeta.classList.add("ocultar");
+      })
+  } ;
+  
+})

@@ -101,6 +101,10 @@ section a{
     text-align: center;
    
 }
+#field-check{
+    display: flex;
+    gap:7px;
+}
 label{
     margin-right: 3px;
 }

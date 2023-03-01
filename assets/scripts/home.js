@@ -58,6 +58,7 @@ document.addEventListener('keyup', e=>{
 
 let chek = [];
 let listachek = " ";
+let fieldset = document.getElementById('field-check');
 
 // aquí obtenemos las categorias de evemtos
 // y las guardamos en el array check[] 
@@ -70,4 +71,18 @@ data.events.forEach(evento => {
     }
     
 });
+
+//cargamos los check dinamicamente 
+
+chek.forEach(elemento => {
+    
+    let div = document.createElement('div')
+    div.innerHTML=`<input type="checkbox" name="${elemento }" id="${elemento}"><label for="${elemento}">${elemento}</label>` 
+    fieldset.appendChild(div)
+
+})
+
+
+
+
 

@@ -21,6 +21,7 @@ for (let i = 0; i < upcoming.length; i++) {
     let btn = document.createElement('a');
 
     creaDiv.setAttribute('class','card');
+    creaDiv.setAttribute('id',upcoming[i].category)
     creaImg.setAttribute('src',upcoming[i].image);
     creaImg.setAttribute('class','imagen');
     cardTexto.setAttribute('class','texto');
@@ -77,12 +78,73 @@ data.events.forEach(evento => {
 });
 
 
-//cargamos los check dinamicamente 
+/**Se cargan los checks dinámicamente 
+ * le asigno el id de la categoria correspondiente
+ * a los valores del atributo categoria
+ * de los objetos en el array events.
+ * De esta forma puedo luego comparar si la 
+ * categoria es igual a la del elemento para así 
+ * poder filtrar con los checkboxs
+ */
 
 chek.forEach(elemento => {
     
   let div = document.createElement('div')
-  div.innerHTML=`<input type="checkbox" name="${elemento }" id="${elemento}"><label for="${elemento}">${elemento}</label>` 
+  div.innerHTML=`<input type="checkbox" class="categoria" name="${elemento }" id="${elemento}"><label for="${elemento}">${elemento}</label>` 
   fieldset.appendChild(div)
 
-})
+});
+
+//tomo todos los elementos checkbox
+//que tienen la misma categoria
+let checkBox =document.querySelectorAll('.categoria');
+
+/*asigno a una variable el modo array
+del htmlcolection de checkbox */
+let checkArray= Array.from(checkBox);
+
+/*capturo el boton buscar por medio de su ID */
+let boton =document.getElementById('btn-buscar');
+
+
+/** escucho el evento click sobre el boton  
+ * para recorrer uno por uno los elementos 
+ * con estado chequed
+*/
+
+boton.addEventListener('click',e=>{
+  e.preventDefault();
+  let card= document.querySelectorAll(".card")
+  card.forEach(tarjeta =>{tarjeta.classList.add("ocultar")});
+  
+  checkArray.forEach(elemnto=>{
+    
+      
+    if(elemnto.checked){
+          
+        card.forEach(el=>{
+
+          if (elemnto.id === el.id ){el.classList.remove("ocultar")}
+    
+        })
+      
+      }
+
+    })
+  
+});
+  
+
+
+/**document.addEventListener('keyup', e=>{
+  if (e.target.matches("#buscar")) {
+      document.querySelectorAll(".card").forEach(tarjeta =>{
+          tarjeta.textContent.toLocaleLowerCase().includes(e.target.value.toLocaleLowerCase())
+          ?tarjeta.classList.remove("ocultar")
+          :tarjeta.classList.add("ocultar");
+      })
+  } ;
+  
+}) */
+
+

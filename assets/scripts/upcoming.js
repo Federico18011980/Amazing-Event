@@ -50,16 +50,7 @@ principal.appendChild(fragment);
 
 //agregando filtro de texto en el input buscador
 
-document.addEventListener('keyup', e=>{
-  if (e.target.matches("#buscar")) {
-      document.querySelectorAll(".card").forEach(tarjeta =>{
-          tarjeta.textContent.toLocaleLowerCase().includes(e.target.value.toLocaleLowerCase())
-          ?tarjeta.classList.remove("ocultar")
-          :tarjeta.classList.add("ocultar");
-      })
-  } ;
-  
-})
+
 
 let chek = [];
 let listachek = " ";
@@ -79,11 +70,9 @@ data.events.forEach(evento => {
 
 
 /**Se cargan los checks dinámicamente 
- * le asigno el id de la categoria correspondiente
- * a los valores del atributo categoria
- * de los objetos en el array events.
+ * le asigno el id de la categoria correspondiente del array events.
  * De esta forma puedo luego comparar si la 
- * categoria es igual a la del elemento para así 
+ * categoria es igual a la del elemento, para así 
  * poder filtrar con los checkboxs
  */
 
@@ -95,56 +84,55 @@ chek.forEach(elemento => {
 
 });
 
-//tomo todos los elementos checkbox
-//que tienen la misma categoria
+
 let checkBox =document.querySelectorAll('.categoria');
-
-/*asigno a una variable el modo array
-del htmlcolection de checkbox */
 let checkArray= Array.from(checkBox);
-
-/*capturo el boton buscar por medio de su ID */
 let boton =document.getElementById('btn-buscar');
+let card= document.querySelectorAll(".card")
+let contador = 0;
 
+/**
+ * EVENTO CLICK
+ */
 
-/** escucho el evento click sobre el boton  
- * para recorrer uno por uno los elementos 
- * con estado chequed
-*/
-
-boton.addEventListener('click',e=>{
-  e.preventDefault();
-  let card= document.querySelectorAll(".card")
+boton.addEventListener('click',eventoClick=>{
+  eventoClick.preventDefault();
+  contador=0;
+  card.forEach(c=>{c.classList.remove("seleccionado")});
   card.forEach(tarjeta =>{tarjeta.classList.add("ocultar")});
   
-  checkArray.forEach(elemnto=>{
-    
-      
-    if(elemnto.checked){
-          
-        card.forEach(el=>{
+  checkArray.forEach(check=>{
+    if(check.checked){
+      console.log("elemnto check " + check.id);
+      card.forEach(c=>{
 
-          if (elemnto.id === el.id ){el.classList.remove("ocultar")}
-    
-        })
-      
-      }
-
-    })
-  
-});
-  
-
-
-/**document.addEventListener('keyup', e=>{
-  if (e.target.matches("#buscar")) {
-      document.querySelectorAll(".card").forEach(tarjeta =>{
-          tarjeta.textContent.toLocaleLowerCase().includes(e.target.value.toLocaleLowerCase())
-          ?tarjeta.classList.remove("ocultar")
-          :tarjeta.classList.add("ocultar");
+        if (c.id === check.id){
+          c.classList.remove("ocultar");
+          c.classList.add("seleccionado")
+          document.addEventListener('keyup', e=>{
+           
+            if (e.target.matches("#buscar")) {
+                document.querySelectorAll(".seleccionado").forEach(tarjeta =>{
+                  tarjeta.textContent.toLocaleLowerCase().includes(e.target.value.toLocaleLowerCase())
+                  ?tarjeta.classList.remove("ocultar")
+                  :tarjeta.classList.add("ocultar")
+                })
+            };
+          }) 
+        }
       })
-  } ;
+      contador++;
+    }
+  })
   
-}) */
+  if(contador == 0){
+    card.forEach(tarjeta =>{tarjeta.classList.remove("ocultar")});
+  }
+  
+})
+
+
+
+
 
 

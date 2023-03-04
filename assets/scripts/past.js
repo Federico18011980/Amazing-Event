@@ -21,6 +21,7 @@ for (let i = 0; i < past.length; i++) {
     let btn = document.createElement('a');
 
     creaDiv.setAttribute('class','card');
+    creaDiv.setAttribute('id',past[i].category);
     creaImg.setAttribute('src',past[i].image);
     creaImg.setAttribute('class','imagen');
     cardTexto.setAttribute('class','texto');
@@ -48,16 +49,7 @@ principal.appendChild(fragment);
 
 //agregando filtro de texto en el input buscador
 
-document.addEventListener('keyup', e=>{
-  if (e.target.matches("#buscar")) {
-      document.querySelectorAll(".card").forEach(tarjeta =>{
-          tarjeta.textContent.toLocaleLowerCase().includes(e.target.value.toLocaleLowerCase())
-          ?tarjeta.classList.remove("ocultar")
-          :tarjeta.classList.add("ocultar");
-      })
-  } ;
-  
-})
+
 
 let chek = [];
 let listachek = " ";
@@ -75,12 +67,67 @@ data.events.forEach(evento => {
     
 });
 
-//cargamos los check dinamicamente 
+
+/**Se cargan los checks dinámicamente 
+ * le asigno el id de la categoria correspondiente del array events.
+ * De esta forma puedo luego comparar si la 
+ * categoria es igual a la del elemento, para así 
+ * poder filtrar con los checkboxs
+ */
 
 chek.forEach(elemento => {
     
   let div = document.createElement('div')
-  div.innerHTML=`<input type="checkbox" name="${elemento }" id="${elemento}"><label for="${elemento}">${elemento}</label>` 
+  div.innerHTML=`<input type="checkbox" class="categoria" name="${elemento }" id="${elemento}"><label for="${elemento}">${elemento}</label>` 
   fieldset.appendChild(div)
 
+});
+
+
+let checkBox =document.querySelectorAll('.categoria');
+let checkArray= Array.from(checkBox);
+let boton =document.getElementById('btn-buscar');
+let card= document.querySelectorAll(".card")
+let contador = 0;
+
+/**
+ * EVENTO CLICK
+ */
+
+boton.addEventListener('click',eventoClick=>{
+  eventoClick.preventDefault();
+  contador=0;
+  card.forEach(c=>{c.classList.remove("seleccionado")});
+  card.forEach(tarjeta =>{tarjeta.classList.add("ocultar")});
+  
+  checkArray.forEach(check=>{
+    if(check.checked){
+      console.log("elemnto check " + check.id);
+      card.forEach(c=>{
+
+        if (c.id === check.id){
+          c.classList.remove("ocultar");
+          c.classList.add("seleccionado")
+          document.addEventListener('keyup', e=>{
+           
+            if (e.target.matches("#buscar")) {
+                document.querySelectorAll(".seleccionado").forEach(tarjeta =>{
+                  tarjeta.textContent.toLocaleLowerCase().includes(e.target.value.toLocaleLowerCase())
+                  ?tarjeta.classList.remove("ocultar")
+                  :tarjeta.classList.add("ocultar")
+                })
+            };
+          }) 
+        }
+      })
+      contador++;
+    }
+  })
+  
+  if(contador == 0){
+    card.forEach(tarjeta =>{tarjeta.classList.remove("ocultar")});
+  }
+  
 })
+
+

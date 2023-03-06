@@ -29,7 +29,7 @@ for (let i = 0; i < past.length; i++) {
     pieDeCard.setAttribute('class','pie');
     pieTexto.setAttribute('class','pie_texto');
     btn.classList.add('btn', 'btn-danger');
-    btn.setAttribute('href', './details.html');
+    btn.setAttribute('href', `./details.html?id=${past[i]._id}`);
     
     cardtitulo.textContent=past[i].name;
     cardTexto.innerHTML=past[i].description;

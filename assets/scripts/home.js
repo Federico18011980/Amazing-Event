@@ -21,7 +21,7 @@ for (let i = 0; i < data.events.length; i++) {
     pieDeCard.setAttribute('class','pie');
     pieTexto.setAttribute('class','pie_texto');
     btn.classList.add('btn', 'btn-danger');
-    btn.setAttribute('href', './details.html');
+    btn.setAttribute('href', `./details.html?id=${data.events[i]._id}`);
     
     cardtitulo.textContent=data.events[i].name;
     cardTexto.innerHTML=data.events[i].description;

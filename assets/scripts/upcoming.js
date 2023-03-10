@@ -2,15 +2,30 @@
 let principal=document.getElementById('principal');
 let fragment = document.createDocumentFragment();
 let upcoming=[];
+upcoming.length = 0;
+let chek = [];
+let listachek = " ";
+let fieldset = document.getElementById('field-check');
+const url = 'https://mindhub-xj03.onrender.com/api/amazing';
 
-for (let i = 0; i < data.events.length; i++) {
 
-    if (data.events[i].date > data.currentDate) {
-      upcoming.push(data.events[i]);    
+fetch(url)
+    .then (response => response.json())
+    .then(datos =>  mostrarDatos(datos))
+    .catch(error=> console.log(error))
+
+mostrarDatos = (datos) => {
+  
+  for (let i = 0; i < datos.events.length; i++) {
+
+    if (datos.events[i].date > datos.currentDate) {
+    
+      upcoming.push(datos.events[i]);    
     }
     
-}
-for (let i = 0; i < upcoming.length; i++) {
+  }
+
+    for (let i = 0; i < upcoming.length; i++) {
 
     let creaDiv = document.createElement('div');  
     let creaImg = document.createElement('img');
@@ -44,23 +59,18 @@ for (let i = 0; i < upcoming.length; i++) {
     creaDiv.appendChild(btn);
     fragment.appendChild(creaDiv);
     
-}
+  }
+
+
 principal.appendChild(fragment);
 
-
 //agregando filtro de texto en el input buscador
-
-
-
-let chek = [];
-let listachek = " ";
-let fieldset = document.getElementById('field-check');
-
 // aquí obtenemos las categorias de evemtos
 // y las guardamos en el array check[] 
 // sin repetirlas
 
-data.events.forEach(evento => {
+
+datos.events.forEach(evento => {
 
     if(!chek.includes(evento.category)){
         chek.push(evento.category)
@@ -131,7 +141,7 @@ boton.addEventListener('click',eventoClick=>{
   
 })
 
-
+}
 
 
 

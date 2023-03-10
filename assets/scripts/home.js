@@ -2,8 +2,19 @@
 let principal=document.getElementById('principal');
 let fragment = document.createDocumentFragment();
 let buscador = document.getElementById('buscar');
+const url = 'https://mindhub-xj03.onrender.com/api/amazing';
+let chek = [];
+let listachek = " ";
+let fieldset = document.getElementById('field-check');
 
-for (let i = 0; i < data.events.length; i++) {
+fetch(url)
+    .then (response => response.json())
+    .then(datos =>  mostrarDatos(datos))
+    .catch(error=> console.log(error))
+
+const mostrarDatos = (datos) => {
+    
+  for (let i = 0; i < datos.events.length; i++) {
     let creaDiv = document.createElement('div');  
     let creaImg = document.createElement('img');
     let cardTexto = document.createElement('p');
@@ -13,19 +24,19 @@ for (let i = 0; i < data.events.length; i++) {
     let btn = document.createElement('a');
 
     creaDiv.setAttribute('class','card');
-    creaDiv.setAttribute('id',data.events[i].category)
-    creaImg.setAttribute('src',data.events[i].image);
+    creaDiv.setAttribute('id',datos.events[i].category)
+    creaImg.setAttribute('src',datos.events[i].image);
     creaImg.setAttribute('class','imagen');
     cardTexto.setAttribute('class','texto');
     cardtitulo.setAttribute('class','card-titulo')
     pieDeCard.setAttribute('class','pie');
     pieTexto.setAttribute('class','pie_texto');
     btn.classList.add('btn', 'btn-danger');
-    btn.setAttribute('href', `./details.html?id=${data.events[i]._id}`);
+    btn.setAttribute('href', `./details.html?id=${datos.events[i]._id}`);
     
-    cardtitulo.textContent=data.events[i].name;
-    cardTexto.innerHTML=data.events[i].description;
-    pieTexto.textContent='Price $'+data.events[i].price;
+    cardtitulo.textContent=datos.events[i].name;
+    cardTexto.innerHTML=datos.events[i].description;
+    pieTexto.textContent='Price $'+datos.events[i].price;
     btn.textContent ='Ver Mas';
     
     pieDeCard.appendChild(pieTexto);
@@ -37,20 +48,10 @@ for (let i = 0; i < data.events.length; i++) {
     fragment.appendChild(creaDiv);
 
 }
-// Obtener el elemento de entrada
+     
+  principal.appendChild(fragment);
 
-principal.appendChild(fragment);
-
-//agregando filtro de texto en el input buscador
-let chek = [];
-let listachek = " ";
-let fieldset = document.getElementById('field-check');
-
-// aquí obtenemos las categorias de evemtos
-// y las guardamos en el array check[] 
-// sin repetirlas
-
-data.events.forEach(evento => {
+datos.events.forEach(evento => {
 
     if(!chek.includes(evento.category)){
         chek.push(evento.category)
@@ -110,6 +111,7 @@ boton.addEventListener('click',eventoClick=>{
             };
           }) 
         }
+      
       })
       contador++;
     }
@@ -121,7 +123,4 @@ boton.addEventListener('click',eventoClick=>{
   
 })
 
-
-
-
-
+}

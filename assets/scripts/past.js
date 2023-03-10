@@ -1,11 +1,24 @@
+const url = 'https://mindhub-xj03.onrender.com/api/amazing';
 let past = [];
 let principal=document.getElementById('principal');
 let fragment = document.createDocumentFragment();
+let chek = [];
+let listachek = " ";
+let fieldset = document.getElementById('field-check');
 
-for (let i = 0; i < data.events.length; i++) {
+fetch(url)
+    .then (response => response.json())
+    .then(datos =>  mostrarDatos(datos))
+    .catch(error=> console.log(error))
 
-    if (data.events[i].date < data.currentDate) {
-      past.push(data.events[i]);    
+mostrarDatos = (datos) => {
+
+
+
+for (let i = 0; i < datos.events.length; i++) {
+
+    if (datos.events[i].date < datos.currentDate) {
+      past.push(datos.events[i]);    
     }
     
 }
@@ -51,15 +64,13 @@ principal.appendChild(fragment);
 
 
 
-let chek = [];
-let listachek = " ";
-let fieldset = document.getElementById('field-check');
+
 
 // aquí obtenemos las categorias de evemtos
 // y las guardamos en el array check[] 
 // sin repetirlas
 
-data.events.forEach(evento => {
+datos.events.forEach(evento => {
 
     if(!chek.includes(evento.category)){
         chek.push(evento.category)
@@ -130,4 +141,4 @@ boton.addEventListener('click',eventoClick=>{
   
 })
 
-
+}

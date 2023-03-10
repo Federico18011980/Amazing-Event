@@ -1,12 +1,22 @@
+const url = 'https://mindhub-xj03.onrender.com/api/amazing';
 const queryString = location.search;
 const param = new URLSearchParams(queryString);
 const id = param.get("id");
-const eventos = data.events.find(evento => evento._id == id );
+
+fetch(url)
+    .then (response => response.json())
+    .then(datos =>  mostrarDatos(datos))
+    .catch(error=> console.log(error))
+
+
+mostrarDatos = (datos)=>{
+
+const eventos = datos.events.find(evento => evento._id == id );
 console.log(eventos);
 const div = document.querySelector(".contenedor")
 
-
-  div.innerHTML=`<div class="fila d-flex">
+function crearTarjeta(contenedor){
+  contenedor.innerHTML=`<div class="fila d-flex">
         <div class="imagen-detalles" id="img-detalles">
           <img src="${eventos.image}">
         </div>
@@ -17,3 +27,7 @@ const div = document.querySelector(".contenedor")
           
         </div>
       </div>`
+}
+
+crearTarjeta(div);
+}

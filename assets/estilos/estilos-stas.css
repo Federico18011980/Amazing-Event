@@ -15,7 +15,15 @@ th{
     margin-top: 0 !important;
     background-color: rgb(152, 151, 151) !important;
     letter-spacing: 2px !important;
+    text-align: center;
+
 }
+.th_titulos{
+    background-color: rgb(207, 204, 204) !important;
+    line-height: 100%;
+    padding: 2px;
+}
+
 td{
     padding: 2px !important;
     height: 1.5rem !important;

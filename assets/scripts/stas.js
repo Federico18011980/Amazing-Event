@@ -1,8 +1,8 @@
-const url = 'https://mindhub-xj03.onrender.com/api/amazing';
+
 
 //la siguiente variale se usara en caso de no
 //tener conexion con la rura de la API 
-const url2 = './assets/jsons/data.json'  
+ 
  
 let arrPast = []; 
 let arrUpcom = []; 
@@ -19,10 +19,7 @@ function cargarTabla(vector){ //funcion para cargar las tablas que son parecidas
     return body;
 }
 
-fetch(url /*url2*/) //todo lo demas es igual
-.then (response => response.json())
-.then(datos =>  mostrarDatos(datos))
-.catch(error=> console.log(error))
+
 
 const mostrarDatos = (datos) => {
     //cargo vector con los datos  para luego ordenar con sort 

@@ -1,4 +1,3 @@
-
 let principal=document.getElementById('principal');
 let fragment = document.createDocumentFragment();
 let upcoming=[];
@@ -6,13 +5,6 @@ upcoming.length = 0;
 let chek = [];
 let listachek = " ";
 let fieldset = document.getElementById('field-check');
-const url = 'https://mindhub-xj03.onrender.com/api/amazing';
-
-
-fetch(url)
-    .then (response => response.json())
-    .then(datos =>  mostrarDatos(datos))
-    .catch(error=> console.log(error))
 
 mostrarDatos = (datos) => {
   
@@ -79,13 +71,6 @@ datos.events.forEach(evento => {
 });
 
 
-/**Se cargan los checks dinámicamente 
- * le asigno el id de la categoria correspondiente del array events.
- * De esta forma puedo luego comparar si la 
- * categoria es igual a la del elemento, para así 
- * poder filtrar con los checkboxs
- */
-
 chek.forEach(elemento => {
     
   let div = document.createElement('div')
@@ -95,51 +80,81 @@ chek.forEach(elemento => {
 });
 
 
+
 let checkBox =document.querySelectorAll('.categoria');
 let checkArray= Array.from(checkBox);
-let boton =document.getElementById('btn-buscar');
+
+checkArray.forEach(elemnto=>{
+    elemnto.setAttribute('class','seleccion')
+})
+
 let card= document.querySelectorAll(".card")
-let contador = 0;
+let checkboxs = document.querySelectorAll('.seleccion')
+let chequeados = 0;
 
-/**
- * EVENTO CLICK
- */
 
-boton.addEventListener('click',eventoClick=>{
-  eventoClick.preventDefault();
-  contador=0;
-  card.forEach(c=>{c.classList.remove("seleccionado")});
-  card.forEach(tarjeta =>{tarjeta.classList.add("ocultar")});
-  
-  checkArray.forEach(check=>{
-    if(check.checked){
-      console.log("elemnto check " + check.id);
-      card.forEach(c=>{
+fieldset.addEventListener('change', function () {
+  chequeados=0;
 
-        if (c.id === check.id){
-          c.classList.remove("ocultar");
-          c.classList.add("seleccionado")
-          document.addEventListener('keyup', e=>{
-           
-            if (e.target.matches("#buscar")) {
-                document.querySelectorAll(".seleccionado").forEach(tarjeta =>{
-                  tarjeta.textContent.toLocaleLowerCase().includes(e.target.value.toLocaleLowerCase())
-                  ?tarjeta.classList.remove("ocultar")
-                  :tarjeta.classList.add("ocultar")
-                })
-            };
-          }) 
-        }
-      })
-      contador++;
-    }
+  checkboxs.forEach(e=>{
+      
+      if(e.checked){
+          chequeados++;
+      }
+      console.log("contador: "+ chequeados);
   })
+
+ 
+      checkboxs.forEach(ch=>{   
+         
+          if (ch.checked) {
+            
+              card.forEach(c=>{
+                  
+                  if (ch.id == c.id){
+                      c.classList.add("seleccionado")
+                      c.classList.remove("ocultar")
+                      document.addEventListener('keyup', e=>{
+     
+                          if (e.target.matches("#buscar")) {
+                              document.querySelectorAll(".seleccionado").forEach(tarjeta =>{
+                                tarjeta.textContent.toLocaleLowerCase().includes(e.target.value.toLocaleLowerCase())
+                                ?tarjeta.classList.remove("ocultar")
+                                :tarjeta.classList.add("ocultar")
+                              })
+                          };
+                        }) 
+                  }
+
+              })
+          }
+      
+          if(!ch.checked){
+              card.forEach(c=>{
+                  
+                  if (ch.id == c.id){
+                      c.classList.remove("seleccionado")
+                      c.classList.add("ocultar")
+                  }
+
+              })
+          
+          }
+    
   
-  if(contador == 0){
-    card.forEach(tarjeta =>{tarjeta.classList.remove("ocultar")});
+  })
+
+ 
+  if (chequeados == 0){
+      card.forEach(c=>{
+          c.classList.remove("ocultar")
+          c.classList.remove("seleccionado")
+      })
   }
   
+      
 })
+
 
 }
 

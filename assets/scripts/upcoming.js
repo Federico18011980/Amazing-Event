@@ -91,7 +91,9 @@ checkArray.forEach(elemnto=>{
 let card= document.querySelectorAll(".card")
 let checkboxs = document.querySelectorAll('.seleccion')
 let chequeados = 0;
-
+let mensaje;
+let parrafo=document.querySelector('#mensaje')
+parrafo.classList.add("ocultar");
 
 fieldset.addEventListener('change', function () {
   chequeados=0;
@@ -121,6 +123,11 @@ fieldset.addEventListener('change', function () {
                                 tarjeta.textContent.toLocaleLowerCase().includes(e.target.value.toLocaleLowerCase())
                                 ?tarjeta.classList.remove("ocultar")
                                 :tarjeta.classList.add("ocultar")
+                                mensaje=document.querySelectorAll(".ocultar");
+                                console.log("mensaje tiene: "+ mensaje.length+" elemntos");
+                                if (mensaje.length> card.length){
+                                  parrafo.classList.remove("ocultar")
+                                }else{parrafo.classList.add("ocultar")}
                               })
                           };
                         }) 

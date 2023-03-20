@@ -16,6 +16,13 @@ body{
     background-color:var(--color-claro);
     font-family: 'Roboto Slab', serif;
 }
+#mensaje{
+    
+    color: red;
+}
+.container p{
+    text-align: center;
+}
 .ocultar{
     display: none;
 }

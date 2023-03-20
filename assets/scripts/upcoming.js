@@ -35,7 +35,7 @@ chek.forEach(elemento => {
 
 const checkboxes = document.querySelectorAll('input[type="checkbox"]');
 let filtros=[];
-
+let mensaje=document.getElementById('mensaje')
 generarTarjetas(upcoming);
 
             document.addEventListener('keyup', e=>{
@@ -45,6 +45,22 @@ generarTarjetas(upcoming);
                         tarjeta.textContent.toLocaleLowerCase().includes(e.target.value.toLocaleLowerCase())
                         ?tarjeta.classList.remove("ocultar")
                         :tarjeta.classList.add("ocultar")
+                        let ocult =document.querySelectorAll(".ocultar")
+                        console.log(ocult.length);
+                            if(ocult.length == upcoming.length){
+                               mensaje.textContent="NO SE ENCONTRO SU BUSQUEDA";
+                               console.log(mensaje);
+                            }else if (ocult.length < upcoming.length){
+                                mensaje.textContent="";
+                            }
+                            if(datos_truchos.length>0){
+                                if(ocult.length==datos_truchos.length){
+                                    mensaje.textContent="NO SE ENCONTRO SU BUSQUEDA";
+                                }else if (ocult.length==datos_truchos.length){
+                                    mensaje.textContent="";
+                                }
+                                
+                            }
                     })
                 };
             })
@@ -83,6 +99,7 @@ checkboxes.forEach(checkbox => {
                         tarjeta.textContent.toLocaleLowerCase().includes(e.target.value.toLocaleLowerCase())
                         ?tarjeta.classList.remove("ocultar")
                         :tarjeta.classList.add("ocultar")
+                        
                     })
                 };
             })

@@ -38,7 +38,7 @@ mostrarDatos = (datos) => {
 
   const checkboxes = document.querySelectorAll('input[type="checkbox"]');
   let filtros=[];
-
+  let mensaje=document.getElementById('mensaje')
   generarTarjetas(past);
   
               document.addEventListener('keyup', e=>{
@@ -48,6 +48,21 @@ mostrarDatos = (datos) => {
                           tarjeta.textContent.toLocaleLowerCase().includes(e.target.value.toLocaleLowerCase())
                           ?tarjeta.classList.remove("ocultar")
                           :tarjeta.classList.add("ocultar")
+                          let ocult =document.querySelectorAll(".ocultar")
+                            if(ocult.length == past.length){
+                               mensaje.textContent="NO SE ENCONTRO SU BUSQUEDA";
+                               console.log(mensaje);
+                            }else if (ocult.length < past.length){
+                                mensaje.textContent="";
+                            }
+                            if(datos_truchos.length>0){
+                                if(ocult.length==datos_truchos.length){
+                                    mensaje.textContent="NO SE ENCONTRO SU BUSQUEDA";
+                                }else if (ocult.length==datos_truchos.length){
+                                    mensaje.textContent="";
+                                }
+                                
+                            }
                       })
                   };
               })

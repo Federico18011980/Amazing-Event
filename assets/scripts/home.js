@@ -17,8 +17,7 @@ const mostrarDatos = (datos) => {
         }
     
     });
-
-
+    
     chek.forEach(elemento => {
         
         let div = document.createElement('div')
@@ -30,16 +29,34 @@ const mostrarDatos = (datos) => {
 
     const checkboxes = document.querySelectorAll('input[type="checkbox"]');
     let filtros=[];
-
+    let mensaje=document.getElementById('mensaje')
+   
     generarTarjetas(datos.events);
     
                 document.addEventListener('keyup', e=>{
            
                     if (e.target.matches("#buscar")) {
-                        document.querySelectorAll(".card").forEach(tarjeta =>{
+                            document.querySelectorAll(".card").forEach(tarjeta =>{
                             tarjeta.textContent.toLocaleLowerCase().includes(e.target.value.toLocaleLowerCase())
-                            ?tarjeta.classList.remove("ocultar")
+                            ?tarjeta .classList.remove("ocultar")
                             :tarjeta.classList.add("ocultar")
+                            
+                            let ocult =document.querySelectorAll(".ocultar")
+                            if(ocult.length == datos.events.length){
+                               mensaje.textContent="NO SE ENCONTRO SU BUSQUEDA";
+                               
+                            }else if (ocult.length < datos.events.length){
+                                mensaje.textContent="";
+                            }
+                            if(datos_truchos.length>0){
+                                if(ocult.length==datos_truchos.length){
+                                    mensaje.textContent="NO SE ENCONTRO SU BUSQUEDA";
+                                }else if (ocult.length==datos_truchos.length){
+                                    mensaje.textContent="";
+                                }
+                                
+                            }
+                            
                         })
                     };
                 })
@@ -66,6 +83,9 @@ const mostrarDatos = (datos) => {
            }
            if(datos_truchos.length>0){
                 generarTarjetas(datos_truchos);
+                //let tarjOcul =document.querySelectorAll(".ocultar")
+                //console.log("tarjetas ocultas " + ocult.length);
+                //console.log("datos truchos: " + datos_truchos.length);
             }
 
 
@@ -78,6 +98,7 @@ const mostrarDatos = (datos) => {
                             tarjeta.textContent.toLocaleLowerCase().includes(e.target.value.toLocaleLowerCase())
                             ?tarjeta.classList.remove("ocultar")
                             :tarjeta.classList.add("ocultar")
+                          
                         })
                     };
                 })

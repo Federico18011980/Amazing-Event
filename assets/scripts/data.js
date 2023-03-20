@@ -1,3 +1,5 @@
+
+
 function generarTarjetas(array) {
     const contenedor = document.getElementById('principal');
     contenedor.innerHTML = '';

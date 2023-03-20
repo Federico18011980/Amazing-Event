@@ -49,7 +49,7 @@ const mostrarDatos = (datos) => {
                                 mensaje.textContent="";
                             }
                             if(datos_truchos.length>0){
-                                if(ocult.length==datos_truchos.length){
+                                if(ocult.length == datos_truchos.length){
                                     mensaje.textContent="NO SE ENCONTRO SU BUSQUEDA";
                                 }else if (ocult.length==datos_truchos.length){
                                     mensaje.textContent="";
@@ -83,9 +83,7 @@ const mostrarDatos = (datos) => {
            }
            if(datos_truchos.length>0){
                 generarTarjetas(datos_truchos);
-                //let tarjOcul =document.querySelectorAll(".ocultar")
-                //console.log("tarjetas ocultas " + ocult.length);
-                //console.log("datos truchos: " + datos_truchos.length);
+              
             }
 
 

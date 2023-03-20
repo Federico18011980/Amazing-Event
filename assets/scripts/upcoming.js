@@ -7,7 +7,7 @@ let listachek = " ";
 let fieldset = document.getElementById('field-check');
 
 mostrarDatos = (datos) => {
-  
+    let datos_truchos=[];
   for (let i = 0; i < datos.events.length; i++) {
 
     if (datos.events[i].date > datos.currentDate) {
